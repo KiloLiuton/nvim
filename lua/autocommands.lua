@@ -32,3 +32,12 @@ vim.api.nvim_create_autocmd('FileType', {
     command = [[nnoremap <buffer><silent> q :close<CR>]],
 })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'man', command = [[nnoremap <buffer><silent> q :quit<CR>]] })
+
+-- Reload Neovim whenever you save plugins.lua
+vim.api.nvim_create_augroup('PackerUserConfig', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = vim.fn.stdpath('config') .. '/lua/plugins.lua',
+    callback = function()
+        vim.cmd('source' .. vim.fn.stdpath('config') .. '/lua/plugins.lua | PackerSync')
+    end
+})

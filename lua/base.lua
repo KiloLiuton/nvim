@@ -44,9 +44,6 @@ opt.mouse = 'a'
 opt.completeopt = 'menu,menuone,noselect'
 opt.shortmess = opt.shortmess + { c = true }
 
-g.mapleader = ' '
-g.maplocalleader = ' '
-
 -- LSP Diagnostics Options Setup
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {

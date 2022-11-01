@@ -1,0 +1,2 @@
+require('winshift').setup({
+})

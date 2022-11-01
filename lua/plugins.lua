@@ -4,21 +4,13 @@ local ensure_packer = function()
     local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
+        vim.cmd([[packadd packer.nvim]])
         return true
     end
     return false
 end
 
 local packer_bootstrap = ensure_packer()
-
--- Reloads Neovim after whenever you save plugins.lua
-vim.cmd([[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup END
-]])
 
 -- Helper to load plugin configuration
 local function get_config(name)
@@ -50,21 +42,31 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = get_config("ui.alpha"),
     })
-    use({ 'glepnir/dashboard-nvim', config = get_config('ui.dashboard') })
 
     -- Colorschemes
-    use('navarasu/onedark.nvim')
-    use('RRethy/nvim-base16')
-    use('EdenEast/nightfox.nvim')
-    use('tiagovla/tokyodark.nvim')
     local theme = 'tokyonight'
     if theme == 'tokyonight' then
-        use({ 'folke/tokyonight.nvim', branch = 'main', config = get_config('ui.tokyonight') })
+        use({ 'folke/tokyonight.nvim', branch = 'main', config = get_config('colorschemes.tokyonight') })
+    elseif theme == 'tokyonight' then
+        use({ 'navarasu/onedark.nvim', branch = 'main', config = get_config('colorschemes.onedark') })
+    elseif theme == 'tokyonight' then
+        use({ 'RRethy/nvim-base16', branch = 'main', config = get_config('colorschemes.base16') })
+    elseif theme == 'tokyonight' then
+        use({ 'EdenEast/nightfox.nvim', branch = 'main', config = get_config('colorschemes.gruvbox') })
+    else
+        vim.cmd('colorscheme default')
     end
 
+    use({
+        'anuvyklack/hydra.nvim',
+        requires = {
+            { "s1n7ax/nvim-window-picker", config = get_config("ui.window-picker") },
+        },
+        config = get_config("hydra")
+    })
 
     -- Visual
-    use('lukas-reineke/indent-blankline.nvim')
+    use({ 'lukas-reineke/indent-blankline.nvim', config=get_config('coding.indent_blankline') })
     use({
         "folke/which-key.nvim",
         config = get_config('ui.which_key'),
@@ -75,9 +77,10 @@ return require('packer').startup(function(use)
         config = get_config('ui.lualine')
     })
     use({ 'nvim-treesitter/nvim-treesitter', config = get_config('coding.treesitter') }) -- Treesitter Syntax Highlighting
+    use({ 'sindrets/winshift.nvim', config = get_config('ui.winshift') })
+    use({ 'https://github.com/lewis6991/gitsigns.nvim.git', config = get_config('git.gitsigns') })
 
     -- File manager
-    use({ 'preservim/nerdtree', requires = { 'ryanoasis/vim-devicons' }, config = get_config('ui.nerdtree') })
     use({
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
@@ -87,31 +90,18 @@ return require('packer').startup(function(use)
         config = get_config('ui.telescope')
     })
 
-    -- Uncomment for some ULTRA fancy shit
-    -- use({
-    --     "nvim-telescope/telescope.nvim",
-    --     requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
-    --     cmd = "Telescope",
-    --     module = "telescope",
-    --     config = get_config("ui.telescope_fancy"),
-    -- })
-    -- use({ "jvgrootveld/telescope-zoxide" })
-    -- use({ "crispgm/telescope-heading.nvim" })
-    -- use({ "nvim-telescope/telescope-symbols.nvim" })
-    -- use({ "nvim-telescope/telescope-file-browser.nvim" })
-    -- use({ "nvim-telescope/telescope-packer.nvim" })
-    -- use({ "nvim-telescope/telescope-ui-select.nvim" })
-    -- use({ "ptethng/telescope-makefile" })
-    -- use({ "ahmedkhalf/project.nvim", config = get_config("ui.project") })
-    -- use({
-    --     "folke/noice.nvim",
-    --     event = "VimEnter",
-    --     config = get_config("ui.noice"),
-    --     requires = {
-    --         "MunifTanjim/nui.nvim",
-    --         { "rcarriga/nvim-notify", config = get_config("ui.notify") },
-    --     },
-    -- })
+    -- Unless you are still migrating, remove the deprecated commands from v1.x
+    vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+    use({
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = get_config('ui.neotree')
+    })
 
     -- Tim Pope
     use('tpope/vim-surround')
