@@ -76,7 +76,4 @@ require('neo-tree').setup({
             -- ['<2-LeftMouse>'] = 'open',
         },
     },
-    git_status = {
-    },
-
 })

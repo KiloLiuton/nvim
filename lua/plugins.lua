@@ -44,14 +44,14 @@ return require('packer').startup(function(use)
     })
 
     -- Colorschemes
-    local theme = 'tokyonight'
+    local theme = require('settings').colorscheme
     if theme == 'tokyonight' then
         use({ 'folke/tokyonight.nvim', branch = 'main', config = get_config('colorschemes.tokyonight') })
-    elseif theme == 'tokyonight' then
+    elseif theme == 'onedark' then
         use({ 'navarasu/onedark.nvim', branch = 'main', config = get_config('colorschemes.onedark') })
-    elseif theme == 'tokyonight' then
+    elseif theme == 'base16' then
         use({ 'RRethy/nvim-base16', branch = 'main', config = get_config('colorschemes.base16') })
-    elseif theme == 'tokyonight' then
+    elseif theme == 'gruvbox' then
         use({ 'EdenEast/nightfox.nvim', branch = 'main', config = get_config('colorschemes.gruvbox') })
     else
         vim.cmd('colorscheme default')

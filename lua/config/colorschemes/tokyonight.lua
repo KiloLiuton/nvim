@@ -1,10 +1,10 @@
-require("tokyonight").setup({
+require('tokyonight').setup({
     -- night, storm, day, moon
-    style = "night",
+    style = 'moon',
     -- borderless Telescope
     ---@diagnostic disable-next-line: unused-local
     on_highlights = function(hl, c)
-        local prompt = "#2d3149"
+        local prompt = '#2d3149'
         hl.TelescopePromptNormal = {
             bg = prompt,
         }
@@ -36,4 +36,4 @@ require("tokyonight").setup({
     end,
 })
 vim.cmd([[colorscheme tokyonight-moon]])
-vim.api.nvim_set_hl(0, "MiniJump", { fg = "#FFFFFF", bg = "#ff00a0" })
+vim.api.nvim_set_hl(0, 'MiniJump', { fg = '#FFFFFF', bg = '#ff00a0' })
