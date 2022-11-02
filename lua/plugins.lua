@@ -38,23 +38,23 @@ return require('packer').startup(function(use)
 
     -- Vim starting screen
     use({
-        "goolord/alpha-nvim",
+        'goolord/alpha-nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
-        config = get_config("ui.alpha"),
+        config = get_config('ui.alpha'),
     })
 
     -- Colorschemes
     local theme = require('settings').colorscheme
     if theme == 'tokyonight' then
         use({ 'folke/tokyonight.nvim', branch = 'main', config = get_config('colorschemes.tokyonight') })
+    elseif theme == 'nightfox' then
+        use({ 'EdenEast/nightfox.nvim', branch = 'main', config = get_config('colorschemes.nightfox') })
     elseif theme == 'onedark' then
         use({ 'navarasu/onedark.nvim', branch = 'main', config = get_config('colorschemes.onedark') })
-    elseif theme == 'base16' then
-        use({ 'RRethy/nvim-base16', branch = 'main', config = get_config('colorschemes.base16') })
     elseif theme == 'gruvbox' then
-        use({ 'EdenEast/nightfox.nvim', branch = 'main', config = get_config('colorschemes.gruvbox') })
+        use({ 'ellisonleao/gruvbox.nvim', branch = 'main', config = get_config('colorschemes.gruvbox') })
     else
-        vim.cmd('colorscheme default')
+        vim.cmd('colorscheme ' .. theme)
     end
 
     use({
@@ -140,7 +140,7 @@ return require('packer').startup(function(use)
         config = get_config('lsp.mason')
     })
     use({ 'neovim/nvim-lspconfig', config = get_config('lsp.lspconfig') })
-    use({ 'simrat39/rust-tools.nvim', config = get_config('lsp.rust_tools') })
+    use({ 'simrat39/rust-tools.nvim', ft = 'rs', config = get_config('lsp.rust_tools') })
 
     -- Null-ls
     use({
