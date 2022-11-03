@@ -43,20 +43,6 @@ return require('packer').startup(function(use)
         config = get_config('ui.alpha'),
     })
 
-    -- Colorschemes
-    local theme = require('settings').colorscheme
-    if theme == 'tokyonight' then
-        use({ 'folke/tokyonight.nvim', branch = 'main', config = get_config('colorschemes.tokyonight') })
-    elseif theme == 'nightfox' then
-        use({ 'EdenEast/nightfox.nvim', branch = 'main', config = get_config('colorschemes.nightfox') })
-    elseif theme == 'onedark' then
-        use({ 'navarasu/onedark.nvim', branch = 'main', config = get_config('colorschemes.onedark') })
-    elseif theme == 'gruvbox' then
-        use({ 'ellisonleao/gruvbox.nvim', branch = 'main', config = get_config('colorschemes.gruvbox') })
-    else
-        vim.cmd('colorscheme ' .. theme)
-    end
-
     use({
         'anuvyklack/hydra.nvim',
         requires = {
@@ -161,6 +147,20 @@ return require('packer').startup(function(use)
         },
         config = get_config('coding.cmp'),
     })
+
+    -- Colorschemes
+    local theme = require('settings').colorscheme
+    if theme == 'tokyonight' then
+        use({ 'folke/tokyonight.nvim', config = get_config('colorschemes.tokyonight') })
+    elseif theme == 'nightfox' then
+        use({ 'EdenEast/nightfox.nvim', config = get_config('colorschemes.nightfox') })
+    elseif theme == 'onedark' then
+        use({ 'navarasu/onedark.nvim', config = get_config('colorschemes.onedark') })
+    elseif theme == 'gruvbox' then
+        use({ 'ellisonleao/gruvbox.nvim', config = get_config('colorschemes.gruvbox') })
+    else
+        vim.cmd('colorscheme ' .. theme)
+    end
 
     -- Boostrap packer
     if packer_bootstrap then

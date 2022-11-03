@@ -106,6 +106,8 @@ wk.register({
     r = { 'Resize' },
     d = { 'DAP' },
     s = { 'Telescope' },
+    m = { 'Options' },
+    g = { 'Git' },
     z = { 'Spelling' },
 }, { prefix = '<leader>', options })
 
