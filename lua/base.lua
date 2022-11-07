@@ -21,6 +21,7 @@ o.list = true
 o.inccommand = 'nosplit'
 o.signcolumn = 'yes'
 o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
+o.winbar = "%{%v:lua.require'winbar'.get_winbar()%}"
 
 -- Text editing configs
 o.expandtab = true

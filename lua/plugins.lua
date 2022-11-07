@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
     })
 
     -- Visual
-    use({ 'lukas-reineke/indent-blankline.nvim', config=get_config('coding.indent_blankline') })
+    use({ 'lukas-reineke/indent-blankline.nvim', config = get_config('coding.indent_blankline') })
     use({
         "folke/which-key.nvim",
         config = get_config('ui.which_key'),
@@ -127,6 +127,7 @@ return require('packer').startup(function(use)
     })
     use({ 'neovim/nvim-lspconfig', config = get_config('lsp.lspconfig') })
     use({ 'simrat39/rust-tools.nvim', ft = 'rs', config = get_config('lsp.rust_tools') })
+    use({ 'SmiteshP/nvim-navic', config = get_config('lsp/nvim_navic') })
 
     -- Null-ls
     use({
@@ -136,8 +137,7 @@ return require('packer').startup(function(use)
     })
 
     -- Cmp
-    use({
-        'hrsh7th/nvim-cmp',
+    use({ 'hrsh7th/nvim-cmp',
         requires = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',

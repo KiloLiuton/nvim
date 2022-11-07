@@ -10,6 +10,7 @@ return {
         Diamond = "<>",
     },
     ui = {
+        Gears = " ",
         BigCircle = " ",
         BigUnfilledCircle = " ",
         BookMark = " ",
