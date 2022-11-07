@@ -1,1 +1,1 @@
-require('gruvbox').setup()
+require("gruvbox").setup()

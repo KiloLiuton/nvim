@@ -1,8 +1,8 @@
-local Hydra = require('hydra')
-local picker = require('window-picker')
+local Hydra = require("hydra")
+local picker = require("window-picker")
 
 local function cmd(command)
-    return table.concat({ '<Cmd>', command, '<CR>' })
+  return table.concat({ "<Cmd>", command, "<CR>" })
 end
 
 local hint = [[
@@ -19,47 +19,47 @@ local hint = [[
 ]]
 
 local pick_window = function()
-    local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
-    vim.api.nvim_set_current_win(picked_window_id)
+  local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
+  vim.api.nvim_set_current_win(picked_window_id)
 end
 
 local opts = { exit = true, nowait = true }
 
 Hydra({
-    name = 'Windows',
-    hint = hint,
-    config = {
-        color = 'pink',
-        invoke_on_body = true,
-        hint = {
-            position = 'middle',
-            border = 'rounded',
-        },
+  name = "Windows",
+  hint = hint,
+  config = {
+    color = "pink",
+    invoke_on_body = true,
+    hint = {
+      position = "middle",
+      border = "rounded",
     },
-    mode = 'n',
-    body = '<leader>r',
-    heads = {
-        -- window splitting
-        { 's', cmd('split'), opts },
-        { 'v', cmd('vsplit'), opts },
-        { 'c', cmd('close'), opts }, -- close current window
-        -- { 'm', cmd('WindowsMaximize'), opts }, -- maximize current window
-        -- window resizing
-        { '=', cmd('wincmd =') },
-        { 'k', cmd('wincmd +') },
-        { 'j', cmd('wincmd -') },
-        { 'h', cmd('wincmd <') },
-        { 'l', cmd('wincmd >') },
-        -- window move
-        { 'H', cmd('WinShift left') },
-        { 'J', cmd('WinShift down') },
-        { 'K', cmd('WinShift up') },
-        { 'L', cmd('WinShift right') },
-        { 'p', pick_window, opts }, -- pick window
-        -- WinShift modes
-        { 'w', cmd('WinShift') },
-        { 'W', cmd('WinShift swap') },
-        { 'q', nil, opts },
-        { '<Esc>', nil, opts },
-    },
+  },
+  mode = "n",
+  body = "<leader>r",
+  heads = {
+    -- window splitting
+    { "s", cmd("split"), opts },
+    { "v", cmd("vsplit"), opts },
+    { "c", cmd("close"), opts }, -- close current window
+    -- { 'm', cmd('WindowsMaximize'), opts }, -- maximize current window
+    -- window resizing
+    { "=", cmd("wincmd =") },
+    { "k", cmd("wincmd +") },
+    { "j", cmd("wincmd -") },
+    { "h", cmd("wincmd <") },
+    { "l", cmd("wincmd >") },
+    -- window move
+    { "H", cmd("WinShift left") },
+    { "J", cmd("WinShift down") },
+    { "K", cmd("WinShift up") },
+    { "L", cmd("WinShift right") },
+    { "p", pick_window, opts }, -- pick window
+    -- WinShift modes
+    { "w", cmd("WinShift") },
+    { "W", cmd("WinShift swap") },
+    { "q", nil, opts },
+    { "<Esc>", nil, opts },
+  },
 })

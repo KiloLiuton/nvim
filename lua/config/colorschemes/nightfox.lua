@@ -1,1 +1,1 @@
-require('nightfox').setup()
+require("nightfox").setup()
