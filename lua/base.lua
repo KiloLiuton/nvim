@@ -1,8 +1,8 @@
 local settings = require("settings")
-local g = vim.g
+-- local g = vim.g
 local o = vim.o
 local opt = vim.opt
-local api = vim.api
+-- local api = vim.api
 
 o.termguicolors = true
 
@@ -24,6 +24,7 @@ o.inccommand = "nosplit"
 o.signcolumn = "yes"
 o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
 o.winbar = "%{%v:lua.require'winbar'.get_winbar()%}"
+o.conceallevel = 0
 
 -- Text editing configs
 o.expandtab = true
