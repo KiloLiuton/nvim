@@ -3,7 +3,7 @@ local navic = require("nvim-navic")
 
 M = {}
 
-M.winbar_filetype_exclude = {
+local winbar_filetype_exclude = {
   "help",
   "startify",
   "dashboard",
@@ -19,14 +19,15 @@ M.winbar_filetype_exclude = {
 }
 
 local excludes = function()
-  if vim.tbl_contains(M.winbar_filetype_exclude, vim.bo.filetype) then
+  if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype)
+  then
     vim.opt_local.winbar = nil
     return true
   end
   return false
 end
 
-function M.get_buf_option(opt)
+local get_buf_option = function(opt)
   local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
   if not status_ok then
     return nil
@@ -36,7 +37,7 @@ function M.get_buf_option(opt)
 end
 
 local function get_modified()
-  if M.get_buf_option("mod") then
+  if get_buf_option("mod") then
     local mod = icons.git.Mod
     return "%#WinBarFilename#" .. mod .. " " .. "%t" .. "%*"
   end
@@ -57,23 +58,23 @@ function M.get_winbar()
   end
   if navic.is_available() then
     return "%#WinBarSeparator#"
-      .. "%="
-      .. icons.ui.Gears
-      .. icons.arrows.ArrowLeft
-      .. "%*"
-      .. get_location()
-      .. "%#WinBarSeparator# "
-      .. icons.arrows.ArrowRight
-      .. "%*"
+        .. "%="
+        .. icons.ui.Gears
+        .. icons.arrows.ArrowLeft
+        .. "%*"
+        .. get_location()
+        .. "%#WinBarSeparator# "
+        .. icons.arrows.ArrowRight
+        .. "%*"
   else
     return "%#WinBarSeparator#"
-      .. "%="
-      .. icons.arrows.ArrowLeft
-      .. "%*"
-      .. get_modified()
-      .. "%#WinBarSeparator# "
-      .. icons.arrows.ArrowRight
-      .. "%*"
+        .. "%="
+        .. icons.arrows.ArrowLeft
+        .. "%*"
+        .. get_modified()
+        .. "%#WinBarSeparator# "
+        .. icons.arrows.ArrowRight
+        .. "%*"
   end
 end
 
