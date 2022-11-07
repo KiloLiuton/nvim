@@ -120,11 +120,9 @@ return require("packer").startup(function(use)
   use("onsails/lspkind-nvim")
   use({
     "williamboman/mason.nvim",
-    requires = {
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-    },
-    cmd = "Mason*",
+    -- module = "mason-tool-installer",
+    requires = { "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    -- cmd = "Mason*",
     config = get_config("lsp.mason"),
   })
   use({ "neovim/nvim-lspconfig", config = get_config("lsp.lspconfig") })

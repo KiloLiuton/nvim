@@ -35,6 +35,7 @@ require("mason-tool-installer").setup({
     "stylua",
     -- DAP
     "codelldb",
+    "debugpy",
   },
   auto_update = false,
   run_on_start = true,
