@@ -119,7 +119,7 @@ wk.register({
 }, { prefix = "<leader>", options })
 
 -- Lsp
-local function setup_buffer_keymaps(bufnr)
+local function create_lsp_mappings(bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local opts = { noremap = true, silent = true, buffer = bufnr }
   wk.register({
@@ -160,6 +160,6 @@ end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    setup_buffer_keymaps(args.buf)
+    create_lsp_mappings(args.buf)
   end,
 })
