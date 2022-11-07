@@ -32,6 +32,7 @@ require("mason-tool-installer").setup({
     "clangd",
     -- Formatter
     "black",
+    "stylua",
     -- DAP
     "codelldb",
   },

@@ -1,16 +1,18 @@
-local null_ls = require("null-ls")
+local nls = require("null-ls")
 
-null_ls.setup({
+nls.setup({
   sources = {
     -- Shell
-    null_ls.builtins.formatting.shfmt,
-    null_ls.builtins.diagnostics.shellcheck,
-    null_ls.builtins.code_actions.shellcheck,
+    nls.builtins.formatting.shfmt,
+    nls.builtins.diagnostics.shellcheck,
+    nls.builtins.code_actions.shellcheck,
     -- Markdown
-    null_ls.builtins.formatting.prettier,
+    nls.builtins.formatting.prettier,
     -- Python
-    null_ls.builtins.formatting.black,
+    nls.builtins.formatting.black,
+    -- Lua
+    nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
     -- Dictionary
-    null_ls.builtins.hover.dictionary,
+    nls.builtins.hover.dictionary,
   },
 })
