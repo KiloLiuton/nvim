@@ -64,7 +64,6 @@ return require("packer").startup(function(use)
   })
   use({ "nvim-treesitter/nvim-treesitter", config = get_config("coding.treesitter") }) -- Treesitter Syntax Highlighting
   use({ "sindrets/winshift.nvim", config = get_config("ui.winshift") })
-  use({ "https://github.com/lewis6991/gitsigns.nvim.git", config = get_config("git.gitsigns") })
 
   -- File manager
   use({
