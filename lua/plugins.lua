@@ -72,6 +72,7 @@ return require("packer").startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
     },
+    cmd = "Telescope",
     config = get_config("ui.telescope"),
   })
 
@@ -85,6 +86,7 @@ return require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    cmd = "Neotree*",
     config = get_config("ui.neotree"),
   })
 
@@ -122,6 +124,7 @@ return require("packer").startup(function(use)
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
+    cmd = "Mason*",
     config = get_config("lsp.mason"),
   })
   use({ "neovim/nvim-lspconfig", config = get_config("lsp.lspconfig") })
