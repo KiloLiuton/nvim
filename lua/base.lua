@@ -1,3 +1,4 @@
+local settings = require("settings")
 local g = vim.g
 local o = vim.o
 local opt = vim.opt
@@ -8,6 +9,7 @@ o.termguicolors = true
 -- Performance
 o.timeoutlen = 500
 o.updatetime = 200
+o.grepprg = settings.grepprg
 
 -- Visual
 o.number = true

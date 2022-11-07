@@ -48,7 +48,7 @@ end
 
 local function configure_debuggers()
   require("config.dap.python").setup()
-  require("config.dap.go").setup()
+  -- require("config.dap.go").setup()
 end
 
 local function create_mapping()
