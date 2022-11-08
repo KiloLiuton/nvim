@@ -17,7 +17,7 @@ local lua_settings = {
   completion = { keywordSnippet = "Disable" },
   diagnostics = {
     enable = true,
-    globals = { "vim", "describe", "it", "before_each", "after_each" },
+    globals = { "vim" },
   },
   workspace = {
     library = {

@@ -85,15 +85,9 @@ wk.register({
   q = { "<CMD>q<CR>", "Quit" },
   b = {
     name = "Buffers",
-    b = {
-      "<cmd>Telescope buffers<cr>",
-      "Find buffer",
-    },
-    D = {
-      "<cmd>%bd|e#|bd#<cr>",
-      "Close all but the current buffer",
-    },
-    d = { "<cmd>bdelete<cr>", "Close buffer" },
+    b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
+    D = { "<cmd>%bd|e#|bd#<cr>", "Close all but the current buffer" },
+    d = { "<cmd>Bdelete<cr>", "Close buffer" },
   },
   f = {
     name = "Files",
@@ -113,7 +107,6 @@ wk.register({
   },
   -- Hydra heads
   r = { "Resize" },
-  d = { "DAP" },
   s = { "Telescope" },
   z = { "Spelling" },
 }, { prefix = "<leader>", options })

@@ -43,6 +43,8 @@ return require("packer").startup(function(use)
     config = get_config("ui.alpha"),
   })
 
+  use('famiu/bufdelete.nvim')
+
   use({
     "anuvyklack/hydra.nvim",
     requires = {
