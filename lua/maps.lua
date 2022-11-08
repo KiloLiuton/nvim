@@ -83,6 +83,7 @@ wk.register({
   -- Quicker save & quit
   w = { "<CMD>w<CR>", "Save" },
   q = { "<CMD>q<CR>", "Quit" },
+  e = { "<cmd>Bdelete<cr>", "Close buffer" },
   b = {
     name = "Buffers",
     b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
