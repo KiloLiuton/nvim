@@ -12,7 +12,5 @@ nls.setup({
     nls.builtins.formatting.black,
     -- Lua
     nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
-    -- Dictionary
-    nls.builtins.hover.dictionary,
   },
 })
