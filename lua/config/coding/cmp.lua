@@ -3,8 +3,8 @@ local lspkind = require("lspkind")
 
 cmp.setup({
   mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-u>"] = cmp.mapping.scroll_docs(4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<C-e>"] = cmp.mapping.close(),
     ["<C-space>"] = cmp.mapping.complete(),
     ["<CR>"] = cmp.mapping.confirm({

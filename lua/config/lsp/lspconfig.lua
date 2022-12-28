@@ -51,7 +51,9 @@ for _, lsp in ipairs(servers) do
         config.settings.python.pythonPath = get_python_path(config.root_dir)
       end
     end,
-    settings = { Lua = lua_settings },
+    settings = {
+      Lua = lua_settings,
+    },
   })
 end
 

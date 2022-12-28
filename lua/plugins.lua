@@ -43,7 +43,7 @@ return require("packer").startup(function(use)
     config = get_config("ui.alpha"),
   })
 
-  use('famiu/bufdelete.nvim')
+  use("famiu/bufdelete.nvim")
 
   use({
     "anuvyklack/hydra.nvim",
@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
 
   -- Visual
   use({ "lukas-reineke/indent-blankline.nvim", config = get_config("coding.indent_blankline") })
+  use({ "windwp/nvim-autopairs", config = get_config("coding.autopairs") })
   use({
     "folke/which-key.nvim",
     config = get_config("ui.which_key"),
@@ -128,7 +129,7 @@ return require("packer").startup(function(use)
     config = get_config("lsp.mason"),
   })
   use({ "neovim/nvim-lspconfig", config = get_config("lsp.lspconfig") })
-  use({ "simrat39/rust-tools.nvim", ft = "rs", config = get_config("lsp.rust_tools") })
+  use({ "simrat39/rust-tools.nvim", config = get_config("lsp.rust_tools") })
   use({ "SmiteshP/nvim-navic", config = get_config("lsp/nvim_navic") })
   use({
     "simrat39/symbols-outline.nvim",

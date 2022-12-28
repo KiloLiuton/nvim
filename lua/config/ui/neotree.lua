@@ -11,12 +11,11 @@ require("neo-tree").setup({
     use_libuv_file_watcher = true,
     group_empty_dirs = false,
     search_limit = 50, -- max number of search results when using filters
-    follow_current_file = false,
+    follow_current_file = true,
   },
 
   buffers = {
     bind_to_cwd = true,
-    follow_current_file = true, -- Focus active buffer file on change
     group_empty_dirs = true,
     follow_current_file = true, -- This will find and focus the file in the active buffer every time
     window = {

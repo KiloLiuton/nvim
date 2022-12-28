@@ -19,6 +19,10 @@ api.nvim_create_autocmd("CursorHold", {
   end,
 })
 
+-- Format buffer on save
+--api.nvim_create_augroup("FormatOnSave", { clear = true })
+--api.nvim_create_autocmd({ "BufWritePre" }, {})
+
 -- Return to last edit position when opening files
 api.nvim_create_augroup("ReturnCursor", { clear = true })
 api.nvim_create_autocmd({ "BufReadPost" }, {

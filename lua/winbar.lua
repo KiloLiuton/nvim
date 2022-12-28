@@ -58,7 +58,7 @@ function M.get_winbar()
   end
   if navic.is_available() then
     return "%#WinBarSeparator#"
-        .. "%="
+    -- return "%="
         .. icons.ui.Gears
         .. icons.arrows.ArrowLeft
         .. "%*"
