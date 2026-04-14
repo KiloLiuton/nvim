@@ -18,3 +18,7 @@
 
 `ui.lua`
 - j-hui/fidget.nvim
+
+## How to Install
+This config was generated on neovim 0.12.1
+To install the plugin versions from lazy-lock.json open nevom and run `:Lazy install`
