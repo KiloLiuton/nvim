@@ -9,6 +9,7 @@
 - mason-org/mason-lspconfig.nvim
 - folke/lazydev.nvim
 - saghen/blink.cmp
+    - L3MON4D3/LuaSnip
 - nvim-lualine/lualine.nvim
     - SmiteshP/nvim-navic
 	- nvim-tree/nvim-web-devicons
