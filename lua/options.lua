@@ -9,12 +9,14 @@ vim.o.cursorline = true
 vim.o.winborder = "rounded"
 vim.o.signcolumn = "yes:1"
 vim.o.termguicolors = true
-
+vim.o.title = true
 vim.o.confirm = true
 vim.o.updatetime = 100
 vim.o.hlsearch = true
 vim.o.autoread = true
 vim.o.incsearch = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Tabs
 vim.o.tabstop = 4
