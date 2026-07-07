@@ -11,7 +11,8 @@ return {
 					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc, silent = true })
 				end
 				-- Hover & Signature
-				map("n", "K", function() vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 }) end, "Hover")
+				map("n", "K", function() vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 120 }) end,
+					"Hover")
 				map({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 				-- Diagnostics navigation
 				map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Prev Diagnostic")
@@ -100,32 +101,33 @@ return {
 			local mason_lsp = require("mason-lspconfig")
 			local lsp = require("lspconfig")
 
-			local function default_setup(server_name)
-				lsp[server_name].setup({})
-			end
-
-			local handlers = {
-				default_setup,
-				["lua_ls"] = function()
-					lsp.lua_ls.setup({
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-									disable = { "inject-field", "undefined-field", "missing-fields" },
-								},
-								runtime = { version = " LuaJIT" },
-								workspace = {
-									library = { vim.env.VIMRUNTIME },
-									checkThirdParty = false,
-								},
-								telemetry = { enable = false },
-							},
-						},
-					})
-				end,
-			}
-			mason_lsp.setup({ handlers = handlers })
+			-- local function default_setup(server_name)
+			-- 	lsp[server_name].setup({})
+			-- end
+			--
+			-- local handlers = {
+			-- 	default_setup,
+			-- 	["lua_ls"] = function()
+			-- 		lsp.lua_ls.setup({
+			-- 			settings = {
+			-- 				Lua = {
+			-- 					diagnostics = {
+			-- 						globals = { "vim" },
+			-- 						disable = { "inject-field", "undefined-field", "missing-fields" },
+			-- 					},
+			-- 					runtime = { version = " LuaJIT" },
+			-- 					workspace = {
+			-- 						library = { vim.env.VIMRUNTIME },
+			-- 						checkThirdParty = false,
+			-- 					},
+			-- 					telemetry = { enable = false },
+			-- 				},
+			-- 			},
+			-- 		})
+			-- 	end,
+			-- }
+			-- mason_lsp.setup({ handlers = handlers })
+			mason_lsp.setup()
 		end,
 	},
 	-- ════════════════════════════════════════════════════════════════════
@@ -146,12 +148,12 @@ return {
 		"saghen/blink.cmp",
 		-- build = "cargo build --release",
 		version = "1.*",
-		dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+		dependencies = { { 'L3MON4D3/LuaSnip', version = 'v2.*' }, { 'ribru17/blink-cmp-spell' } },
 		opts = {
 			snippets = { preset = 'luasnip' },
 			sources = {
 				-- add lazydev to your completion providers
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer", "spell" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
@@ -159,12 +161,37 @@ return {
 						-- make lazydev completions top priority (see `:h blink.cmp`)
 						score_offset = 100,
 					},
+					spell = {
+						name = 'Spell',
+						module = 'blink-cmp-spell',
+						opts = {
+							-- EXAMPLE: Only enable source in `@spell` captures, and disable it
+							-- in `@nospell` captures.
+							enable_in_context = function()
+								local curpos = vim.api.nvim_win_get_cursor(0)
+								local captures = vim.treesitter.get_captures_at_pos(
+									0,
+									curpos[1] - 1,
+									curpos[2] - 1
+								)
+								local in_spell_capture = false
+								for _, cap in ipairs(captures) do
+									if cap.capture == 'spell' then
+										in_spell_capture = true
+									elseif cap.capture == 'nospell' then
+										return false
+									end
+								end
+								return in_spell_capture
+							end,
+						},
+					},
 				},
 			},
 			keymap = {
 				preset = "default",
-				["<tab>"] = { "select_next", "fallback" },
-				["<s-tab>"] = { "select_prev", "fallback" },
+				-- ["<tab>"] = { "select_next", "fallback" },
+				-- ["<s-tab>"] = { "select_prev", "fallback" },
 				["<enter>"] = { "accept", "fallback" },
 			},
 		},
