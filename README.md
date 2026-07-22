@@ -1,25 +1,11 @@
-## List of used plugins:
-
-`indent.lua`
-- lukas-reineke/indent-blankline.nvim
-- windwp/nvim-autopairs
-
-`lsp.lua`
-- neovim/nvim-lspconfig
-- mason-org/mason-lspconfig.nvim
-- folke/lazydev.nvim
-- saghen/blink.cmp
-    - L3MON4D3/LuaSnip
-- nvim-lualine/lualine.nvim
-    - SmiteshP/nvim-navic
-	- nvim-tree/nvim-web-devicons
-
-`theme.lua`
-- catppuccin/nvim
-
-`ui.lua`
-- j-hui/fidget.nvim
+## Main plugins:
+- mason / mason-lspconfig
+- blink (completion)
+- lualine
+- vim-fugitive
+- gitsigns
+- nvim-autopairs
 
 ## How to Install
 This config was generated on neovim 0.12.1
-To install the plugin versions from lazy-lock.json open nevom and run `:Lazy install`
+To install the plugin versions from lazy-lock.json open neovim and run `:Lazy install`
