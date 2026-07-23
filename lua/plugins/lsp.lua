@@ -22,7 +22,7 @@ return {
 				map("n", "<leader>cr", vim.lsp.buf.rename, "Rename Symbol")
 				map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostic")
 				map("n", "<leader>cv", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Definition in Vsplit")
-				map("n", "<leader>cf", function() vim.lsp.buf.format() vim.cmd('w') end, "Format Save" )
+				map("n", "<leader>cf", function() vim.lsp.buf.format() end, "Format code" )
 				-- <leader>l = LSP
 				map("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>", "LSP Info")
 				map("n", "<leader>lr", "<cmd>lsp restart<cr>", "LSP Restart")
