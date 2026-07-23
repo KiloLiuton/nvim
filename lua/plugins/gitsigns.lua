@@ -18,7 +18,8 @@ return {
 			})
 
 			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
-			vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Blame line" })
+			vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "Blame" })
+			vim.keymap.set("n", "<leader>gc", ":G commit %<CR>", { desc = "Commit file" })
 			-- Normal mode: Stages the hunk under the cursor
 			vim.keymap.set("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage git hunk" })
 			-- Visual mode: Stages only the selected lines within a hunk
