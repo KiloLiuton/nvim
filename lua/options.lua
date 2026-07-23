@@ -30,12 +30,9 @@ vim.o.shiftwidth = 4
 vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch and ESC" })
 
 -- Save
-vim.keymap.set("n", "<leader>w", function()
-	vim.lsp.buf.format()
-	vim.cmd("w")
-end, { desc = "Format Save" })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Save" })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 
 -- Buffers
 vim.keymap.set("n", "<S-l>", ":bnext<cr>", { desc = "Next buffer" })
