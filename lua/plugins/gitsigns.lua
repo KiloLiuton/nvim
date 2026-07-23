@@ -19,6 +19,12 @@ return {
 
 			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
 			vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Blame line" })
+			-- Normal mode: Stages the hunk under the cursor
+			vim.keymap.set("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage git hunk" })
+			-- Visual mode: Stages only the selected lines within a hunk
+			vim.keymap.set("v", "<leader>gs", function()
+				gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+			end, { desc = "Stage git hunk selection" })
 			-- Jump between changes using ]c and [c
 			vim.keymap.set("n", "]c", function()
 				if vim.wo.diff then
@@ -29,7 +35,6 @@ return {
 				end)
 				return "<Ignore>"
 			end, { expr = true, desc = "Next Git change" })
-
 			vim.keymap.set("n", "[c", function()
 				if vim.wo.diff then
 					return "[c"
