@@ -17,6 +17,7 @@ return {
 				},
 			})
 
+			vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
 			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
 			vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "Blame" })
 			vim.keymap.set("n", "<leader>gc", ":G commit %<CR>", { desc = "Commit file" })
