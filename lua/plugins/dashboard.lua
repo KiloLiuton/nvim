@@ -11,7 +11,7 @@ return {
 			{ "nvim-tree/nvim-web-devicons", "amansingh-afk/milli.nvim", "nvim-telescope/telescope.nvim" },
 		},
 		opts = function()
-			local splash = require("milli").load({ splash = "finger" })
+			local splash = require("milli").load({ splash = "fire" })
 			return {
 				theme = "doom",
 				config = {
@@ -19,7 +19,8 @@ return {
 					center = {
 						{ icon = "🔭", desc = "Find File", key = "f", action = "Telescope find_files" },
 						{ icon = " ", desc = "Restore buffers", key = "r", action = "lua require('persistence').load()", },
-						{ icon = "  ", desc = "Quit", key = "q", action = "qa" },
+						{ icon = "📄", desc = "Empty", group = "Label", key = "n", action = "enew" },
+						{ icon = "❌", desc = "Quit", key = "q", action = "qa" },
 					},
 				},
 			}
