@@ -27,7 +27,7 @@ return {
 		end,
 		config = function(_, opts)
 			require("dashboard").setup(opts)
-			require("milli").dashboard({ splash = "finger", loop = true })
+			require("milli").dashboard({ splash = "blackhole", loop = true })
 		end,
 	},
 	{
