@@ -11,7 +11,7 @@ return {
 			{ "nvim-tree/nvim-web-devicons", "amansingh-afk/milli.nvim", "nvim-telescope/telescope.nvim" },
 		},
 		opts = function()
-			local splash = require("milli").load({ splash = "fire" })
+			local splash = require("milli").load({ splash = "blackhole" })
 			return {
 				theme = "doom",
 				config = {
